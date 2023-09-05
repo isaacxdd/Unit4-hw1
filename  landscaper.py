@@ -173,4 +173,29 @@ def use_push_lawnmower():
 
         else:
             print("Invalid input. Please choose a valid option.")
+
+            def use_battery_powered_lawnmower():
+    while(True):
+        user_input = int(input("""
+                            Would you like to use the battery powered lawnmower to earn $100?
+                            [1] Yes
+                            [2] No, I'll stick to using the good ol' push lawnmower
+                            [3] Quit the Game
+                            """))
+        if(user_input == 1):
+            game_data['money'] += 100
+            print(f"You earned $100 mowing the lawn using your battery powered lawnmower. You now have ${game_data['money']}.")
+            if game_data['money'] >= 500:
+                hire_team_starving_students()
+
+        elif(user_input == 2):
+            game_data['money'] += 50
+            print(f"You mowed the lawn using the push lawnmower and earned $50. You now have ${game_data['money']}.")
+
+        elif(user_input == 3):
+            game_data['quit'] = True
+            print("You quit the game")
+
+        else:
+            print("Invalid input. Please choose a valid option.")
 use_teeth()
