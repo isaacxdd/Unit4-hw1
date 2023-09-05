@@ -45,13 +45,13 @@ def buy_rusty_scissors()
 
             use_teeth()
 
-        elif (user_input == 2):
+        else if (user_input == 2):
 
-            game_data["quit"] = True
-
-        elif(game_data["quit"] == True):
-
+            game_data["quit"] = True   
             print("You quit the game")
+
+             else:
+            print("Invalid input. Please choose a valid option.")
 
 
 
@@ -62,7 +62,7 @@ def use_rusty_scissors():
 
         user_input = int(input("""
 
-                            Would you like to use your rusty scissors?
+                            Would you like to use your rusty scissors to cut grass for $5?
 
                             [1] Yes
 
@@ -78,7 +78,8 @@ def use_rusty_scissors():
 
             print(f"You cut the grass using rusty scissors and made $5. You have a total of ${game_data['money']}.")
 
-            use_rusty_scissors()
+        if game_data["money"] >= 25:
+                buy_push_lawnmower()
 
 
         else if(user_input == 2):
@@ -89,12 +90,64 @@ def use_rusty_scissors():
 
             use_teeth()
 
-
-        else if(user_input ==3): 
-
-            game_data["quit"] == True
-
+        elif (user_input == 3):
+            game_data["quit"] = True
             print("You quit the game")
 
+        else:
+            print("Invalid input. Please choose a valid option.")
+
+
+def buy_push_lawnmower():
+    while(True):
+        user_input = int(input(""" 
+                        Would you like to buy a push lawnmower for $25?
+                        [1] Yes
+                        [2] No
+                        [3] Quit the Game
+                        """))
+
+        if(user_input == 1):
+            game_data["money"] -= 25
+            print(f"You have purchased a push lawnmower for $25 and now have ${game_data['money']}.")
+            use_push_lawnmower()
+
+        elif(user_input == 2):
+            game_data["money"] += 5
+            use_rusty_scissors()
+
+        elif (user_input == 3):
+            game_data["quit"] = True
+            print("You quit the game")
+
+        else:
+            print("Invalid input. Please choose a valid option.")
+
+
+def use_push_lawnmower():
+    while(True):
+        user_input = int(input("""
+                            Would you like to use your push lawnmower to mow the lawn for $50?
+                            [1] Yes
+                            [2] No, I want to use my rusty scissors
+                            [3] Quit the Game
+                            """))
+        if(user_input == 1):
+            game_data['money'] += 50
+            print(f"You mowed the lawn using the push lawnmower and earned $50. You now have ${game_data['money']}.")
+            if game_data["money"] >= 250:
+                buy_battery_powered_lawnmower()
+
+        elif(user_input == 2):
+            game_data['money'] +=5
+            print(f"You cut the grass using rusty scissors and made $5. You have a total of ${game_data['money']}.")
+
+        elif(user_input == 3):
+            game_data["quit"] = True
+            print("You quit the game")
+
+        else:
+            print("Invalid input. Please choose a valid option.")
+       
             break
 use_teeth()
